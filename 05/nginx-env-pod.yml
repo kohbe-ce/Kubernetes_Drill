@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-env-pod
+  labels:
+    name: nginx-env-pod
+spec:
+  containers:
+  - name: nginx-env-pod
+    image: nginx:1.14
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+    env:
+    - name: MYVAR
+      value: "testvalue"

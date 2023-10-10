@@ -1,0 +1,17 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: prodns
+spec:
+  containers:
+  - name: myweb
+    image: nginx:1.14
+    ports:
+    - containerPort: 3306
+    resources:
+     requests:
+       cpu: 200m
+       memory: 500Mi
+     limits:
+       cpu: 1
+       memory: 1Gi
