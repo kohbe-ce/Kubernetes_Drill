@@ -1,0 +1,23 @@
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: rs-mainui
+spec:
+  selector:
+    matchLabels:
+      name: apache
+  replicas: 2
+  template:
+    metadata:
+      name: pod-mainui
+      labels:
+        name: apache
+        app: main
+        rel: stable
+    spec:
+      containers:
+      - name: container-mainui
+        image: httpd:2.2
+        ports:
+        - containerPort: 80
+

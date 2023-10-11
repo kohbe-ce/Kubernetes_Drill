@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: dep-mainui
+  annotations:
+    kubernetes.io/change-cause: version 2.4
+spec:
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 20
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: webui
+  replicas: 2
+  template:
+    metadata:
+      name: web-pod
+      labels:
+        app: webui
+    spec:
+      containers:
+        - name: web
+          image: httpd:2.4
