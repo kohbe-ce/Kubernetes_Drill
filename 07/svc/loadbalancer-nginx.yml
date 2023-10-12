@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: loadbalancer-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: webui
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+    
