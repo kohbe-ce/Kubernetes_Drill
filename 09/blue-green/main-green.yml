@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: main-green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mainbg
+      version: green-2.0
+  template:
+    metadata:
+      name: main-pod
+      labels:
+        app: mainbg
+        version: green-2.0
+    spec:
+      containers:
+        - name: main-container
+          image: whatwant/node-web:2.0
+          ports:
+          - containerPort: 8080

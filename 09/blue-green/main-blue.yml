@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: main-blue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mainbg
+      version: blue-1.0
+  template:
+    metadata:
+      name: main-pod
+      labels:
+        app: mainbg
+        version: blue-1.0
+    spec:
+      containers:
+        - name: main-container
+          image: whatwant/node-web:2.0
+          ports:
+          - containerPort: 8080
