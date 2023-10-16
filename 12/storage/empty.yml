@@ -1,0 +1,19 @@
+kind : Pod
+apiVersion: v1
+metadata:
+  name: web
+  labels:
+    app: web
+    version: stable
+spec:
+  volumes:
+  - name: html
+    emptyDir: {}
+  containers:
+  - name: nginx
+    image: nginx:1.14
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: html
+      mountPath: /usr/share/nginx/html
